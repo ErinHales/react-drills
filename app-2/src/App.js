@@ -3,16 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      list: ["Pizza", "Apples", "Bananas", "Lunch Meat", "Cereal", "Oatmeal"]
+    }
+  }
+  
+  makeList() {
+    var arr = [];
+    for(var i=0; i<this.state.list.length; i++) {
+      arr.push(<h2 key={i + "uniqueKey"}>{this.state.list[i]}</h2>);
+    }
+    return arr;
+  }
+  
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <h1>Grocery List</h1>
+        {this.makeList()}
       </div>
     );
   }
